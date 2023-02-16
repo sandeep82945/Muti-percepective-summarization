@@ -55,7 +55,7 @@ df2=df.iloc[2400:,2:-1]
 df=df1.append(df2)
 print(df.columns)
 print(df.shape)
-df.to_csv('/home/arpan_2121cs33/sandeep/del_fol/dialogsum/Baseline/abstract_lastIntro/ecir_train_data_last_sent_new.csv')
+df.to_csv('ecir_train_data.csv')
 raw_datasets=load_dataset("csv",data_files={"train":"ecir_train_data.csv"})
 
 raw_datasets_val1=load_dataset("csv",data_files={"validation":"ecir_val_data.csv"})
