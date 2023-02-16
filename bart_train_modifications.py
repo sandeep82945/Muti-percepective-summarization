@@ -44,10 +44,10 @@ def transform_dialogsumm_to_huggingface_dataset(train,validation,test):
     return DatasetDict({"train":train,"validation":validation,"test":test})
 
 import pandas as pd
-df=pd.read_csv('/home/arpan_2121cs33/sandeep/del_fol/dialogsum/Baseline/abstract_lastIntro/ecir_train_data_last_sent.csv')
-val_df=pd.read_csv('/home/arpan_2121cs33/sandeep/del_fol/dialogsum/Baseline/abstract_lastIntro/ecir_val_data_last_sent.csv')
+df=pd.read_csv('ecir_train_data.csv')
+val_df=pd.read_csv('ecir_val_data.csv')
 val_df=val_df.drop_duplicates(subset="abstract",keep='first')
-val_df.to_csv('/home/arpan_2121cs33/sandeep/del_fol/dialogsum/Baseline/abstract_lastIntro/ecir_val_data_last_sent_new.csv')
+val_df.to_csv('val.csv')
 print(len(df[df['avg']>400]))
 print(val_df.shape)
 df1=df.iloc[:2300,2:-1]
@@ -56,10 +56,10 @@ df=df1.append(df2)
 print(df.columns)
 print(df.shape)
 df.to_csv('/home/arpan_2121cs33/sandeep/del_fol/dialogsum/Baseline/abstract_lastIntro/ecir_train_data_last_sent_new.csv')
-raw_datasets=load_dataset("csv",data_files={"train":"/home/arpan_2121cs33/sandeep/del_fol/dialogsum/Baseline/abstract_lastIntro/ecir_train_data_last_sent_new.csv"})
+raw_datasets=load_dataset("csv",data_files={"train":"ecir_train_data.csv"})
 
-raw_datasets_val1=load_dataset("csv",data_files={"validation":"/home/arpan_2121cs33/sandeep/del_fol/dialogsum/Baseline/abstract_lastIntro/ecir_val_data_last_sent_new.csv"})
-raw_datasets_test=load_dataset("csv",data_files={"test":"/home/arpan_2121cs33/sandeep/del_fol/dialogsum/Baseline/abstract_lastIntro/ecir_test_data_last_sent.csv"})
+raw_datasets_val1=load_dataset("csv",data_files={"validation":"ecir_val_data.csv"})
+raw_datasets_test=load_dataset("csv",data_files={"test":"ecir_test.csv"})
 print(type(raw_datasets))
 
 model = AutoModelForSeq2SeqLM.from_pretrained(model_checkpoint)
@@ -302,16 +302,12 @@ for val_data in list_val:
 
 
 # output summaries on test set
-with open("/home/arpan_2121cs33/sandeep/del_fol/dialogsum/Baseline/last_intro_output/Training_Rouge_TEST6.txt","w") as f: 
+with open("Training_Rouge.txt","w") as f: 
     for j in final_decoded_preds:
         for i in j:
             # print(i)
             f.write(i.replace("\n","")+"\n")
-# df=pd.read_csv('/home/arpan_2121cs33/sandeep/del_fol/dialogsum/Baseline/test_output_new.txt')
-# new_df=pd.DataFrame()
-# new_df['paper_id']=paper_id
-# new_df['summary']=df['0']
-# new_df.to_csv('/home/arpan_2121cs33/sandeep/del_fol/dialogsum/Baseline/results_summ.csv')
+
 list_val=[tokenized_datasets_val1["validation"]]#,tokenized_datasets_val2["test"],tokenized_datasets_val3["test"],tokenized_datasets_val4["test"],tokenized_datasets_val5["test"]]
 final_decoded_preds=[]
 for val_data in list_val:    
@@ -333,7 +329,7 @@ for val_data in list_val:
 
 
 # output summaries on test set
-with open("/home/arpan_2121cs33/sandeep/del_fol/dialogsum/Baseline/last_intro_output/Training_Rouge_VAL6.txt","w") as f: 
+with open("Training_Rouge_VAL.txt","w") as f: 
     for j in final_decoded_preds:
         for i in j:
             # print(i)
