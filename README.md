@@ -6,4 +6,4 @@
 
 ### Architecture
 
-<img src="https://user-images.githubusercontent.com/43180442/219563160-eed11995-3a4d-49e1-97ca-30b40182647d.png"  width="600" height="900">
+<img src="https://user-images.githubusercontent.com/43180442/219563160-eed11995-3a4d-49e1-97ca-30b40182647d.png"  width="900" height="700">
