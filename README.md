@@ -10,3 +10,8 @@
 
 ### Setting up Environment
 >conda env create -f <environment.yml>
+
+### Code
+> - model_train.py: Trains the Proposed BART on the Multiperspective Data
+> - model_train.py: Trains the Proposed BART on the Multiperspective Data
+> - model_train.py: Trains the Proposed BART on the Multiperspective Data
