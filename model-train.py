@@ -247,9 +247,6 @@ class CustomTrainer(Seq2SeqTrainer):
             result = weighted_average(values)
             sum_sum+=result
         sum_sum=sum_sum/len(y_preds)
-        #Target ko generate Summary1 ka logits1, Summary 2 ka logits 2, summary 3 ka logits 3
-        # compute custom loss (suppose one has 3 labels with different weights)
-        #important
         loss_fct = nn.CrossEntropyLoss()
         loss1 = loss_fct(logits1.view(-1,self.model.config.vocab_size),labels1.view(-1))
         loss2 = loss_fct(logits2.view(-1,self.model.config.vocab_size),labels2.view(-1))
