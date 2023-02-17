@@ -13,5 +13,5 @@
 
 ### Code
 > - model_train.py: Trains the Proposed BART on the Multiperspective Data
-> - model_train.py: Trains the Proposed BART on the Multiperspective Data
-> - model_train.py: Trains the Proposed BART on the Multiperspective Data
+> - rouge.py: Helper files to process the Rouge Scores
+> - custom_loss: Defines the proposed loss in the Custom_Trainer Class
